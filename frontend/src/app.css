@@ -1,0 +1,129 @@
+/* Clarity Theme Global CSS Variables & Design Tokens */
+
+:root[data-mantine-color-scheme="dark"] {
+	--mantine-color-body: #0b0f17;
+
+	/* Font settings */
+	--font-sans:
+		"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+	/* Chart colors */
+	--chart-grid-color: rgba(255, 255, 255, 0.07);
+	--chart-tick-color: #94a3b8;
+	--chart-series-1: #38bdf8;
+	--chart-series-2: #fbbf24;
+	--chart-series-3: #a855f7;
+	--chart-series-4: #34d399;
+
+	/* Server status indicators */
+	--color-server-status-running: #10b981;
+	--color-server-status-starting: #f59e0b;
+	--color-server-status-stopping: #f97316;
+	--color-server-status-offline: #f43f5e;
+
+	/* Clarity theme surfaces */
+	--clarity-subtle-border: rgba(255, 255, 255, 0.08);
+	--clarity-surface-raised: #111827;
+	--clarity-surface-glass: rgba(15, 23, 42, 0.75);
+}
+
+:root[data-mantine-color-scheme="light"] {
+	--mantine-color-body: #f8fafc;
+
+	/* Font settings */
+	--font-sans:
+		"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+	/* Chart colors */
+	--chart-grid-color: rgba(15, 23, 42, 0.08);
+	--chart-tick-color: #64748b;
+	--chart-series-1: #0284c7;
+	--chart-series-2: #d97706;
+	--chart-series-3: #9333ea;
+	--chart-series-4: #059669;
+
+	/* Server status indicators */
+	--color-server-status-running: #059669;
+	--color-server-status-starting: #d97706;
+	--color-server-status-stopping: #ea580c;
+	--color-server-status-offline: #e11d48;
+
+	/* Clarity theme surfaces */
+	--clarity-subtle-border: rgba(15, 23, 42, 0.08);
+	--clarity-surface-raised: #ffffff;
+	--clarity-surface-glass: rgba(255, 255, 255, 0.85);
+}
+
+/* Container Modes with high specificity */
+body [data-clarity-container="flush"] {
+	width: 100%;
+	max-width: 100%;
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+}
+
+body [data-clarity-container="inset"] {
+	width: 100%;
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Navigation Mode: Collapsed Drawer (Compact Rail) */
+@media (min-width: 1024px) {
+	body [data-clarity-nav="collapsed-drawer"] #sidebar-desktop {
+		width: 4.75rem;
+		transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	body [data-clarity-nav="collapsed-drawer"] #sidebar-desktop:hover {
+		width: 16rem;
+		box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+		z-index: 45;
+	}
+
+	body
+		[data-clarity-nav="collapsed-drawer"]
+		#sidebar-desktop:not(:hover)
+		span.font-sans {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.15s ease;
+	}
+
+	body
+		[data-clarity-nav="collapsed-drawer"]
+		#sidebar-desktop:hover
+		span.font-sans {
+		opacity: 1;
+		transition: opacity 0.15s ease 0.05s;
+	}
+}
+
+/* Navigation Mode: Top Bar */
+@media (min-width: 1024px) {
+	body [data-clarity-nav="top-bar"] #sidebar-desktop {
+		width: calc(100% - 1rem);
+		height: 3.75rem;
+		position: sticky;
+		top: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	body [data-clarity-nav="top-bar"] #sidebar-desktop #sidebar-content {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	body
+		[data-clarity-nav="top-bar"]
+		#sidebar-desktop
+		#sidebar-content
+		> div:nth-child(2) {
+		flex-direction: row;
+		overflow-x: auto;
+		overflow-y: hidden;
+		gap: 0.35rem;
+	}
+}

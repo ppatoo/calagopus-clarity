@@ -1,0 +1,20 @@
+[package]
+name = "dev_antigravity_clarity"
+description = "Original Calagopus Theme and UI Enhancement Layer"
+authors = ["Antigravity"]
+version = "1.0.0"
+edition = { workspace = true }
+
+[dependencies]
+shared = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+utoipa = { workspace = true }
+utoipa-axum = { workspace = true }
+axum = { workspace = true }
+garde = { workspace = true }
+compact_str = { workspace = true }
+indexmap = { workspace = true }
+anyhow = { workspace = true }

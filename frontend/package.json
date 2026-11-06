@@ -1,0 +1,11 @@
+{
+	"name": "dev_antigravity_clarity",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"main": "src/index.tsx",
+	"types": "src/index.tsx",
+	"dependencies": {
+		"shared": "workspace:*"
+	}
+}
