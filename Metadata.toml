@@ -1,6 +1,6 @@
 package_name = "dev.antigravity.clarity"
 name = "Clarity Theme & UI"
-panel_version = ">=1.2.9"
+panel_version = ">=1.2.8"
 license_text = """
 MIT License
 

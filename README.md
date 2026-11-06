@@ -6,7 +6,7 @@
 
 ## 1. Ground Truth & Compatibility
 
-- **Calagopus Panel Version**: `>=1.2.9`
+- **Calagopus Panel Version**: `>=1.2.8`
 - **Target Repository**: `https://github.com/calagopus/panel` (MIT)
 - **Target Git Commit SHA**: `f89411e9b51273d4a6be0c534927b799a7fd448f`
 - **Rust Toolchain**: `rustc 1.99.0+` (Workspace Edition: 2024)

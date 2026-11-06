@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Core Architecture & Identity**:
-  - Registered package `dev.antigravity.clarity` targeting Calagopus Panel `>=1.2.9`.
+  - Registered package `dev.antigravity.clarity` targeting Calagopus Panel `>=1.2.8`.
   - Canonical layout structure compatible with modern Calagopus extension standards.
   - MIT License and clean-room implementation free of third-party commercial assets or telemetry.
 - **Layer A - Mantine Theme Overrides**:
