@@ -14,6 +14,7 @@ export const PowerPlacementSchema = z.enum(["header", "sidebar", "floating"]);
 export type PowerPlacement = z.infer<typeof PowerPlacementSchema>;
 
 export const AccentPresetSchema = z.enum([
+	"navy",
 	"cyan",
 	"monochrome",
 	"violet",
@@ -30,7 +31,7 @@ export const LayoutConfigSchema = z.object({
 	navMode: NavModeSchema.default("left-sidebar"),
 	containerMode: ContainerModeSchema.default("inset"),
 	powerPlacement: PowerPlacementSchema.default("header"),
-	accentPreset: AccentPresetSchema.default("cyan"),
+	accentPreset: AccentPresetSchema.default("navy"),
 	borderRadius: BorderRadiusSchema.default("modern"),
 	tactileButtons: z.boolean().default(true),
 	statusGlow: z.boolean().default(true),
@@ -43,7 +44,7 @@ export const DEFAULT_LAYOUT_CONFIG: LayoutConfig = {
 	navMode: "left-sidebar",
 	containerMode: "inset",
 	powerPlacement: "header",
-	accentPreset: "cyan",
+	accentPreset: "navy",
 	borderRadius: "modern",
 	tactileButtons: true,
 	statusGlow: true,

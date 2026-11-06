@@ -71,7 +71,7 @@ class DevAntigravityClarityExtension extends Extension {
 		_args: object,
 	): unknown {
 		if (name === "dev_antigravity_clarity_get_version") {
-			return "1.0.0";
+			return "1.2.0";
 		}
 		if (name === "dev_antigravity_clarity_get_theme_name") {
 			return "Clarity";

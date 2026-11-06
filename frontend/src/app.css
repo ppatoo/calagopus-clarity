@@ -1,33 +1,35 @@
 /* Clarity Theme & UI Enhancement Layer */
-/* Original theme design system inspired by modern obsidian aesthetics */
+/* Original theme design system inspired by modern obsidian & deep navy aesthetics */
 
 :root[data-mantine-color-scheme="dark"] {
-	--mantine-color-body: #0b0d12;
+	--mantine-color-body: #121212;
+	--mantine-color-background: #121212;
+	--mantine-primary-color: #2f4b7c;
 
 	/* Surface Hierarchy Tokens */
-	--surface-base: #0b0d12;
-	--surface-card: #0f1219;
-	--surface-raised: #161a23;
-	--surface-overlay: #1e232e;
+	--surface-base: #121212;
+	--surface-card: #1e1e1e;
+	--surface-raised: #252830;
+	--surface-overlay: #2d313d;
 
 	/* Typography & Ink Tokens */
-	--ink: #e2e8f0;
+	--ink: #e0e0e0;
 	--ink-muted: #94a3b8;
 	--ink-faint: #64748b;
 	--font-sans:
-		"Montserrat Variable", Montserrat, "IBM Plex Sans", Inter, -apple-system,
+		"Inter", "Montserrat Variable", Montserrat, "IBM Plex Sans", -apple-system,
 		BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
 	/* Hairline Borders */
 	--clarity-subtle-border: rgba(255, 255, 255, 0.08);
 	--clarity-field-border: rgba(255, 255, 255, 0.12);
-	--clarity-surface-raised: #161a23;
-	--clarity-surface-glass: rgba(15, 18, 25, 0.85);
+	--clarity-surface-raised: #252830;
+	--clarity-surface-glass: rgba(30, 30, 30, 0.85);
 
 	/* Chart Tokens */
 	--chart-grid-color: rgba(255, 255, 255, 0.07);
 	--chart-tick-color: #94a3b8;
-	--chart-series-1: #38bdf8;
+	--chart-series-1: #2f4b7c;
 	--chart-series-2: #fbbf24;
 	--chart-series-3: #a855f7;
 	--chart-series-4: #34d399;
@@ -38,17 +40,19 @@
 	--color-server-status-stopping: #f97316;
 	--color-server-status-offline: #f43f5e;
 
-	/* Default Accent Settings */
-	--clarity-accent: #06b6d4;
-	--clarity-accent-glow: rgba(6, 182, 212, 0.25);
+	/* Default Accent Settings (Deep Navy #2f4b7c) */
+	--clarity-accent: #2f4b7c;
+	--clarity-accent-glow: rgba(47, 75, 124, 0.35);
 
-	/* Default Geometry */
-	--clarity-card-radius: 0.875rem;
-	--clarity-btn-radius: 0.75rem;
+	/* Geometry */
+	--clarity-card-radius: 8px;
+	--clarity-btn-radius: 8px;
 }
 
 :root[data-mantine-color-scheme="light"] {
 	--mantine-color-body: #f8fafc;
+	--mantine-color-background: #ffffff;
+	--mantine-primary-color: #2f4b7c;
 
 	--surface-base: #f8fafc;
 	--surface-card: #ffffff;
@@ -59,7 +63,7 @@
 	--ink-muted: #64748b;
 	--ink-faint: #94a3b8;
 	--font-sans:
-		"Montserrat Variable", Montserrat, "IBM Plex Sans", Inter, -apple-system,
+		"Inter", "Montserrat Variable", Montserrat, "IBM Plex Sans", -apple-system,
 		BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
 	--clarity-subtle-border: rgba(15, 23, 42, 0.08);
@@ -69,7 +73,7 @@
 
 	--chart-grid-color: rgba(15, 23, 42, 0.08);
 	--chart-tick-color: #64748b;
-	--chart-series-1: #0284c7;
+	--chart-series-1: #2f4b7c;
 	--chart-series-2: #d97706;
 	--chart-series-3: #9333ea;
 	--chart-series-4: #059669;
@@ -79,14 +83,19 @@
 	--color-server-status-stopping: #ea580c;
 	--color-server-status-offline: #e11d48;
 
-	--clarity-accent: #0891b2;
-	--clarity-accent-glow: rgba(8, 145, 178, 0.2);
+	--clarity-accent: #2f4b7c;
+	--clarity-accent-glow: rgba(47, 75, 124, 0.2);
 
-	--clarity-card-radius: 0.875rem;
-	--clarity-btn-radius: 0.75rem;
+	--clarity-card-radius: 8px;
+	--clarity-btn-radius: 8px;
 }
 
 /* Dynamic Accent Presets */
+html[data-clarity-accent="navy"] {
+	--clarity-accent: #2f4b7c;
+	--clarity-accent-glow: rgba(47, 75, 124, 0.35);
+}
+
 html[data-clarity-accent="cyan"] {
 	--clarity-accent: #06b6d4;
 	--clarity-accent-glow: rgba(6, 182, 212, 0.25);
@@ -119,18 +128,18 @@ html[data-clarity-accent="rose"] {
 
 /* Radius Presets */
 html[data-clarity-radius="compact"] {
-	--clarity-card-radius: 0.5rem;
-	--clarity-btn-radius: 0.375rem;
+	--clarity-card-radius: 6px;
+	--clarity-btn-radius: 6px;
 }
 
 html[data-clarity-radius="modern"] {
-	--clarity-card-radius: 0.875rem;
-	--clarity-btn-radius: 0.75rem;
+	--clarity-card-radius: 8px;
+	--clarity-btn-radius: 8px;
 }
 
 html[data-clarity-radius="rounded"] {
-	--clarity-card-radius: 1.125rem;
-	--clarity-btn-radius: 1rem;
+	--clarity-card-radius: 14px;
+	--clarity-btn-radius: 12px;
 }
 
 /* Micro-Interactions: Tactile Buttons */
@@ -145,7 +154,9 @@ html[data-clarity-tactile="true"] .mantine-ActionIcon-root:active {
 body .mantine-Card-root,
 body .mantine-Paper-root {
 	border-radius: var(--clarity-card-radius);
+	background-color: var(--surface-card);
 	border-color: var(--clarity-subtle-border);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 	transition:
 		border-color 0.15s ease,
 		box-shadow 0.15s ease;
@@ -153,9 +164,48 @@ body .mantine-Paper-root {
 
 body .mantine-Button-root {
 	border-radius: var(--clarity-btn-radius);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition:
 		transform 0.1s ease,
 		background-color 0.15s ease;
+}
+
+/* Active Navigation Item Horizontal Gradient */
+#sidebar-desktop .mantine-Button-root.active,
+#sidebar-content .mantine-Button-root.active,
+a.active > .mantine-Button-root,
+.mantine-Button-root[data-active="true"] {
+	background: linear-gradient(
+		to right,
+		rgb(from var(--clarity-accent) r g b / 0.25),
+		transparent
+	) !important;
+	border-left: 3px solid var(--clarity-accent);
+	font-weight: 600;
+	color: var(--ink, #ffffff) !important;
+}
+
+#sidebar-desktop .mantine-Button-root:hover:not(.active),
+#sidebar-content .mantine-Button-root:hover:not(.active) {
+	background-color: var(--surface-raised, rgba(255, 255, 255, 0.05));
+	color: var(--ink, #ffffff);
+}
+
+/* Navigation Section Headers / Dividers */
+#sidebar-desktop .mantine-Divider-root,
+#sidebar-content .mantine-Divider-root {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+#sidebar-desktop .mantine-Divider-label,
+#sidebar-content .mantine-Divider-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--ink-faint, #64748b);
+	padding-left: 0.5rem;
 }
 
 /* Ambient Status Edge Glow */

@@ -1,5 +1,18 @@
 import type { MantineColorsTuple, MantineThemeOverride } from "@mantine/core";
 
+export const clarityNavyPalette: MantineColorsTuple = [
+	"#edf4fc",
+	"#dbe7f7",
+	"#b7ceef",
+	"#8eb2e6",
+	"#6293dd",
+	"#437ad5",
+	"#2f4b7c",
+	"#243b62",
+	"#1b2c49",
+	"#121e33",
+];
+
 export const clarityPalette: MantineColorsTuple = [
 	"#ecfeff",
 	"#cffafe",
@@ -92,11 +105,12 @@ export const clarityRosePalette: MantineColorsTuple = [
 ];
 
 export const clarityTheme: MantineThemeOverride = {
-	primaryColor: "clarity",
+	primaryColor: "navy",
 	defaultRadius: "md",
 	fontFamily:
-		'"Montserrat Variable", Montserrat, "IBM Plex Sans", Inter, var(--font-sans), system-ui, sans-serif',
+		'"Inter", "Montserrat Variable", Montserrat, "IBM Plex Sans", var(--font-sans), system-ui, sans-serif',
 	colors: {
+		navy: clarityNavyPalette,
 		clarity: clarityPalette,
 		dark: clarityObsidianPalette,
 		violet: clarityVioletPalette,

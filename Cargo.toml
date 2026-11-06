@@ -2,7 +2,7 @@
 name = "dev_antigravity_clarity"
 description = "Original Calagopus Theme and UI Enhancement Layer"
 authors = ["Antigravity"]
-version = "1.0.0"
+version = "1.2.0"
 edition = { workspace = true }
 
 [dependencies]

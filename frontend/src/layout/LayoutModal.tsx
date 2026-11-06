@@ -101,6 +101,7 @@ export default function LayoutModal({ opened, onClose }: LayoutModalProps) {
 									}))
 								}
 								data={[
+									{ label: "Navy", value: "navy" },
 									{ label: "Cyan", value: "cyan" },
 									{ label: "Monochrome", value: "monochrome" },
 									{ label: "Violet", value: "violet" },

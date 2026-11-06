@@ -7,6 +7,7 @@ import {
 } from "../layout/types.ts";
 import {
 	clarityDarkPalette,
+	clarityNavyPalette,
 	clarityObsidianPalette,
 	clarityPalette,
 	clarityTheme,
@@ -17,7 +18,7 @@ test("LayoutConfigSchema accepts valid default configuration", () => {
 	assert.strictEqual(parsed.navMode, "left-sidebar");
 	assert.strictEqual(parsed.containerMode, "inset");
 	assert.strictEqual(parsed.powerPlacement, "header");
-	assert.strictEqual(parsed.accentPreset, "cyan");
+	assert.strictEqual(parsed.accentPreset, "navy");
 	assert.strictEqual(parsed.borderRadius, "modern");
 	assert.strictEqual(parsed.tactileButtons, true);
 	assert.strictEqual(parsed.statusGlow, true);
@@ -51,7 +52,7 @@ test("LayoutConfigSchema falls back gracefully on empty object", () => {
 	assert.strictEqual(parsed.navMode, "left-sidebar");
 	assert.strictEqual(parsed.containerMode, "inset");
 	assert.strictEqual(parsed.powerPlacement, "header");
-	assert.strictEqual(parsed.accentPreset, "cyan");
+	assert.strictEqual(parsed.accentPreset, "navy");
 	assert.strictEqual(parsed.borderRadius, "modern");
 	assert.strictEqual(parsed.tactileButtons, true);
 	assert.strictEqual(parsed.statusGlow, true);
@@ -65,9 +66,11 @@ test("Layout setting namespace is properly qualified", () => {
 });
 
 test("Theme palette definitions satisfy Mantine 10-shade requirements", () => {
+	assert.strictEqual(clarityNavyPalette.length, 10);
+	assert.strictEqual(clarityNavyPalette[6], "#2f4b7c");
 	assert.strictEqual(clarityPalette.length, 10);
 	assert.strictEqual(clarityDarkPalette.length, 10);
 	assert.strictEqual(clarityObsidianPalette.length, 10);
-	assert.strictEqual(clarityTheme.primaryColor, "clarity");
+	assert.strictEqual(clarityTheme.primaryColor, "navy");
 	assert.strictEqual(clarityTheme.defaultRadius, "md");
 });

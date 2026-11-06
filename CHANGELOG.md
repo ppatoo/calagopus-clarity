@@ -5,6 +5,23 @@ All notable changes to the `dev.antigravity.clarity` extension will be documente
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-11-05
+
+### Added
+- **Deep Navy Preset & Palette (`#2f4b7c`)**:
+  - Implemented standard deep-blue / navy palette (`#2f4b7c`) with 10-shade Mantine spectrum `clarityNavyPalette` as primary default.
+  - Set dark mode background to `#121212`, body text to `#e0e0e0`, and cards to `#1e1e1e`.
+- **Active Navigation Horizontal Gradient**:
+  - Active navigation buttons render an elegant left-to-right accent gradient (`linear-gradient(to right, rgb(from var(--clarity-accent) r g b / 0.25), transparent)`) with 3px solid accent border and 600 weight typography.
+  - Subtle hover transitions matching clean-room interaction specifications.
+- **Uppercase Navigation Section Headers**:
+  - Sidebar dividers styled with 11px uppercase tracking-wider text in `--ink-faint` (`#64748b`).
+- **Card Spacing & Metrics**:
+  - Increased card padding to `1.5rem` (24px) with rounded corners (8px) and soft shadow (`0 2px 4px rgba(0, 0, 0, 0.12)`).
+  - Default button corner radius tuned to 8px.
+- **Palette Selector in Studio**:
+  - Added Navy preset option to the Live Studio Palette selector.
+
 ## [1.1.0] - 2026-11-05
 
 ### Added

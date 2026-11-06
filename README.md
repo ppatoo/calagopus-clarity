@@ -22,7 +22,7 @@
 - **Identifier / Crate Name**: `dev_antigravity_clarity`
 - **Display Name**: Clarity Theme & UI
 - **Authors**: Antigravity
-- **Release Version**: `1.0.0`
+- **Release Version**: `1.2.0`
 
 ---
 
@@ -52,9 +52,11 @@ Clarity strictly adheres to the Calagopus extension hierarchy, applying visual m
 ### Layer A — Mantine Theme (`frontend/src/theme.ts`)
 - Returns partial `MantineThemeOverride` deep-merged by Calagopus.
 - Defines custom 10-shade color palettes:
-  - `clarity`: High-visibility cyan/teal primary scale `[0..9]`.
-  - `clarityDark`: Obsidian/slate neutral scale `[0..9]` for background surfaces.
-- Configures `defaultRadius: 'md'` across Buttons, Cards, Modals, and Inputs.
+  - `navy`: High-contrast deep navy primary scale (`#2f4b7c`) anchoring buttons, active links, and accents.
+  - `clarity`: High-visibility cyan/teal secondary scale.
+  - `dark`: Obsidian neutral scale (`#121212` body, `#1e1e1e` card surfaces).
+  - `violet`, `emerald`, `sunset`, `rose`: Dynamic accent presets.
+- Configures `defaultRadius: 'md'` across Buttons (8px), Cards (8px-14px), Modals, and Inputs.
 
 ### Layer B — Scoped CSS Variables (`frontend/src/app.css`)
 - Strict scoping under `:root[data-mantine-color-scheme="dark"]` and `:root[data-mantine-color-scheme="light"]` (bare `:root` is avoided so Calagopus scheme selectors do not override custom values).
