@@ -79,7 +79,7 @@ pub async fn route(
     logger
         .log(
             "clarity:settings.update",
-            serde_json::to_value(&body).unwrap_or_default(),
+            serde_json::to_value(body).unwrap_or_default(),
         )
         .await;
 

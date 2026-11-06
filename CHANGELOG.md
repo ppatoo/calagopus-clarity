@@ -5,6 +5,25 @@ All notable changes to the `dev.antigravity.clarity` extension will be documente
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-11-05
+
+### Added
+- **Obsidian & Slate Surface System**:
+  - Re-engineered dark mode surface hierarchy inspired by modern clean Calagopus aesthetics: base (`#0b0d12`), card (`#0f1219`), raised (`#161a23`), and overlay (`#1e232e`).
+  - Added hairline borders with CSS relative opacity (`rgba(255, 255, 255, 0.08)`).
+- **Dynamic Accent System**:
+  - Six selectable accent presets: Cyan (`#06b6d4`), Monochrome (`#ffffff`), Violet (`#8b5cf6`), Emerald (`#10b981`), Sunset (`#f97316`), and Rose (`#f43f5e`).
+- **Geometry & Micro-Interactions**:
+  - Three corner radius scales: Compact (8px), Modern (14px), Rounded (18px).
+  - Tactile button press physics (`translate-y-[1px]` on active click).
+  - Ambient status edge glow on server cards (`lime-400` running, `amber-400` starting, `rose-500` offline).
+- **Clarity Live Studio Drawer**:
+  - Tabbed customizer interface: Palette & Accents, Layout & Navigation, Surfaces & Radii, and Live Custom CSS.
+  - Instant live CSS rule injection into the active session without page reload.
+- **Enhanced Telemetry HUD**:
+  - Status glow border on server overview cards.
+  - Live progress bars for CPU, RAM, Disk, and bidirectional network throughput.
+
 ## [1.0.0] - 2026-11-05
 
 ### Added

@@ -19,6 +19,18 @@ export default function ServerMetricsHud() {
 		return null;
 	}
 
+	const state = stats.state || "offline";
+	const isOnline = state === "running";
+	const isStarting = state === "starting";
+
+	const glowClass = isOnline
+		? "clarity-status-glow-running border-l-4 border-l-lime-400"
+		: isStarting
+			? "clarity-status-glow-starting border-l-4 border-l-amber-400"
+			: "clarity-status-glow-offline border-l-4 border-l-rose-500";
+
+	const statusColor = isOnline ? "lime" : isStarting ? "yellow" : "red";
+
 	const cpuPercent = Math.min(100, Math.round(stats.cpuAbsolute || 0));
 	const memUsed = stats.memoryBytes || 0;
 	const memLimit = (server.limits.memory || 0) * 1024 * 1024;
@@ -34,25 +46,28 @@ export default function ServerMetricsHud() {
 		<ServerCan action="clarity.view">
 			<Card
 				withBorder
-				p="xs"
+				p="sm"
 				radius="md"
-				className="mb-4 bg-surface-glass border-[var(--clarity-subtle-border)] backdrop-blur-sm shadow-sm"
+				className={`mb-4 bg-[#0f1219]/90 border-[rgba(255,255,255,0.08)] backdrop-blur-md shadow-sm transition-all duration-200 ${glowClass}`}
 			>
 				<Group justify="space-between" mb="xs">
 					<Group gap="xs">
 						<FontAwesomeIcon icon={faBolt} className="text-cyan-400 text-xs" />
 						<Text size="xs" fw={700} tt="uppercase" c="dimmed">
-							Clarity Real-Time Telemetry HUD
+							Clarity Telemetry HUD
 						</Text>
+						<Badge size="xs" variant="light" color={statusColor}>
+							{state.toUpperCase()}
+						</Badge>
 					</Group>
-					<Badge size="xs" variant="dot" color="green">
-						Live Sync
+					<Badge size="xs" variant="dot" color="teal">
+						Live Stream
 					</Badge>
 				</Group>
 
 				<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="xs">
 					{/* CPU Card */}
-					<div className="p-2 rounded bg-neutral-900/40 border border-neutral-800/60">
+					<div className="p-2.5 rounded-lg bg-[#161a23] border border-white/5">
 						<Group justify="space-between" mb={4}>
 							<Group gap="xs">
 								<FontAwesomeIcon
@@ -60,87 +75,96 @@ export default function ServerMetricsHud() {
 									className="text-cyan-400 text-xs"
 								/>
 								<Text size="xs" fw={600}>
-									CPU Load
+									CPU
 								</Text>
 							</Group>
-							<Text size="xs" fw={700} c={cpuPercent > 85 ? "red" : "cyan"}>
+							<Text size="xs" fw={700} c="cyan">
 								{cpuPercent}%
+								{server.limits.cpu ? ` / ${server.limits.cpu}%` : ""}
 							</Text>
 						</Group>
 						<Progress
 							value={cpuPercent}
 							size="xs"
-							color={cpuPercent > 85 ? "red" : "cyan"}
+							color={
+								cpuPercent > 90 ? "red" : cpuPercent > 75 ? "yellow" : "cyan"
+							}
 							radius="xl"
 						/>
 					</div>
 
 					{/* Memory Card */}
-					<div className="p-2 rounded bg-neutral-900/40 border border-neutral-800/60">
+					<div className="p-2.5 rounded-lg bg-[#161a23] border border-white/5">
 						<Group justify="space-between" mb={4}>
 							<Group gap="xs">
 								<FontAwesomeIcon
 									icon={faMemory}
-									className="text-amber-400 text-xs"
+									className="text-purple-400 text-xs"
 								/>
 								<Text size="xs" fw={600}>
-									Memory
+									Arbeitsspeicher
 								</Text>
 							</Group>
-							<Text size="xs" fw={700} c={memPercent > 90 ? "red" : "amber"}>
-								{bytesToString(memUsed)}
+							<Text size="xs" fw={700} c="purple">
+								{bytesToString(memUsed)}{" "}
+								{memLimit > 0 ? `/ ${bytesToString(memLimit)}` : ""}
 							</Text>
 						</Group>
 						<Progress
 							value={memPercent}
 							size="xs"
-							color={memPercent > 90 ? "red" : "amber"}
+							color={
+								memPercent > 90 ? "red" : memPercent > 75 ? "yellow" : "purple"
+							}
 							radius="xl"
 						/>
 					</div>
 
 					{/* Disk Card */}
-					<div className="p-2 rounded bg-neutral-900/40 border border-neutral-800/60">
+					<div className="p-2.5 rounded-lg bg-[#161a23] border border-white/5">
 						<Group justify="space-between" mb={4}>
 							<Group gap="xs">
 								<FontAwesomeIcon
 									icon={faHardDrive}
-									className="text-purple-400 text-xs"
+									className="text-amber-400 text-xs"
 								/>
 								<Text size="xs" fw={600}>
-									Storage
+									Speicherplatz
 								</Text>
 							</Group>
-							<Text size="xs" fw={700} c={diskPercent > 90 ? "red" : "grape"}>
-								{bytesToString(diskUsed)}
+							<Text size="xs" fw={700} c="amber">
+								{bytesToString(diskUsed)}{" "}
+								{diskLimit > 0 ? `/ ${bytesToString(diskLimit)}` : ""}
 							</Text>
 						</Group>
 						<Progress
 							value={diskPercent}
 							size="xs"
-							color={diskPercent > 90 ? "red" : "grape"}
+							color={
+								diskPercent > 90 ? "red" : diskPercent > 75 ? "yellow" : "amber"
+							}
 							radius="xl"
 						/>
 					</div>
 
-					{/* Network I/O */}
-					<div className="p-2 rounded bg-neutral-900/40 border border-neutral-800/60">
+					{/* Network I/O Card */}
+					<div className="p-2.5 rounded-lg bg-[#161a23] border border-white/5">
 						<Group justify="space-between" mb={4}>
 							<Group gap="xs">
 								<FontAwesomeIcon
 									icon={faNetworkWired}
-									className="text-emerald-400 text-xs"
+									className="text-lime-400 text-xs"
 								/>
 								<Text size="xs" fw={600}>
 									Network I/O
 								</Text>
 							</Group>
-							<Text size="xs" fw={700} c="emerald">
+							<Text size="xs" fw={700} c="lime">
 								{bytesToString(stats.network?.rxBytes || 0)} ↓ /{" "}
 								{bytesToString(stats.network?.txBytes || 0)} ↑
 							</Text>
 						</Group>
-						<Progress value={45} size="xs" color="emerald" radius="xl" />
+						<Progress value={50} size="xs" color="lime" radius="xl" />
 					</div>
 				</SimpleGrid>
 			</Card>

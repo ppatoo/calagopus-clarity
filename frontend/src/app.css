@@ -1,13 +1,30 @@
-/* Clarity Theme Global CSS Variables & Design Tokens */
+/* Clarity Theme & UI Enhancement Layer */
+/* Original theme design system inspired by modern obsidian aesthetics */
 
 :root[data-mantine-color-scheme="dark"] {
-	--mantine-color-body: #0b0f17;
+	--mantine-color-body: #0b0d12;
 
-	/* Font settings */
+	/* Surface Hierarchy Tokens */
+	--surface-base: #0b0d12;
+	--surface-card: #0f1219;
+	--surface-raised: #161a23;
+	--surface-overlay: #1e232e;
+
+	/* Typography & Ink Tokens */
+	--ink: #e2e8f0;
+	--ink-muted: #94a3b8;
+	--ink-faint: #64748b;
 	--font-sans:
-		"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+		"Montserrat Variable", Montserrat, "IBM Plex Sans", Inter, -apple-system,
+		BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-	/* Chart colors */
+	/* Hairline Borders */
+	--clarity-subtle-border: rgba(255, 255, 255, 0.08);
+	--clarity-field-border: rgba(255, 255, 255, 0.12);
+	--clarity-surface-raised: #161a23;
+	--clarity-surface-glass: rgba(15, 18, 25, 0.85);
+
+	/* Chart Tokens */
 	--chart-grid-color: rgba(255, 255, 255, 0.07);
 	--chart-tick-color: #94a3b8;
 	--chart-series-1: #38bdf8;
@@ -15,26 +32,41 @@
 	--chart-series-3: #a855f7;
 	--chart-series-4: #34d399;
 
-	/* Server status indicators */
-	--color-server-status-running: #10b981;
-	--color-server-status-starting: #f59e0b;
+	/* Server Status Indicators */
+	--color-server-status-running: #a3e635;
+	--color-server-status-starting: #fbbf24;
 	--color-server-status-stopping: #f97316;
 	--color-server-status-offline: #f43f5e;
 
-	/* Clarity theme surfaces */
-	--clarity-subtle-border: rgba(255, 255, 255, 0.08);
-	--clarity-surface-raised: #111827;
-	--clarity-surface-glass: rgba(15, 23, 42, 0.75);
+	/* Default Accent Settings */
+	--clarity-accent: #06b6d4;
+	--clarity-accent-glow: rgba(6, 182, 212, 0.25);
+
+	/* Default Geometry */
+	--clarity-card-radius: 0.875rem;
+	--clarity-btn-radius: 0.75rem;
 }
 
 :root[data-mantine-color-scheme="light"] {
 	--mantine-color-body: #f8fafc;
 
-	/* Font settings */
-	--font-sans:
-		"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--surface-base: #f8fafc;
+	--surface-card: #ffffff;
+	--surface-raised: #f1f5f9;
+	--surface-overlay: #e2e8f0;
 
-	/* Chart colors */
+	--ink: #0f172a;
+	--ink-muted: #64748b;
+	--ink-faint: #94a3b8;
+	--font-sans:
+		"Montserrat Variable", Montserrat, "IBM Plex Sans", Inter, -apple-system,
+		BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+	--clarity-subtle-border: rgba(15, 23, 42, 0.08);
+	--clarity-field-border: rgba(15, 23, 42, 0.12);
+	--clarity-surface-raised: #ffffff;
+	--clarity-surface-glass: rgba(255, 255, 255, 0.85);
+
 	--chart-grid-color: rgba(15, 23, 42, 0.08);
 	--chart-tick-color: #64748b;
 	--chart-series-1: #0284c7;
@@ -42,24 +74,112 @@
 	--chart-series-3: #9333ea;
 	--chart-series-4: #059669;
 
-	/* Server status indicators */
-	--color-server-status-running: #059669;
+	--color-server-status-running: #16a34a;
 	--color-server-status-starting: #d97706;
 	--color-server-status-stopping: #ea580c;
 	--color-server-status-offline: #e11d48;
 
-	/* Clarity theme surfaces */
-	--clarity-subtle-border: rgba(15, 23, 42, 0.08);
-	--clarity-surface-raised: #ffffff;
-	--clarity-surface-glass: rgba(255, 255, 255, 0.85);
+	--clarity-accent: #0891b2;
+	--clarity-accent-glow: rgba(8, 145, 178, 0.2);
+
+	--clarity-card-radius: 0.875rem;
+	--clarity-btn-radius: 0.75rem;
 }
 
-/* Container Modes with high specificity */
+/* Dynamic Accent Presets */
+html[data-clarity-accent="cyan"] {
+	--clarity-accent: #06b6d4;
+	--clarity-accent-glow: rgba(6, 182, 212, 0.25);
+}
+
+html[data-clarity-accent="monochrome"] {
+	--clarity-accent: #ffffff;
+	--clarity-accent-glow: rgba(255, 255, 255, 0.2);
+}
+
+html[data-clarity-accent="violet"] {
+	--clarity-accent: #8b5cf6;
+	--clarity-accent-glow: rgba(139, 92, 246, 0.25);
+}
+
+html[data-clarity-accent="emerald"] {
+	--clarity-accent: #10b981;
+	--clarity-accent-glow: rgba(16, 185, 129, 0.25);
+}
+
+html[data-clarity-accent="sunset"] {
+	--clarity-accent: #f97316;
+	--clarity-accent-glow: rgba(249, 115, 22, 0.25);
+}
+
+html[data-clarity-accent="rose"] {
+	--clarity-accent: #f43f5e;
+	--clarity-accent-glow: rgba(244, 63, 94, 0.25);
+}
+
+/* Radius Presets */
+html[data-clarity-radius="compact"] {
+	--clarity-card-radius: 0.5rem;
+	--clarity-btn-radius: 0.375rem;
+}
+
+html[data-clarity-radius="modern"] {
+	--clarity-card-radius: 0.875rem;
+	--clarity-btn-radius: 0.75rem;
+}
+
+html[data-clarity-radius="rounded"] {
+	--clarity-card-radius: 1.125rem;
+	--clarity-btn-radius: 1rem;
+}
+
+/* Micro-Interactions: Tactile Buttons */
+html[data-clarity-tactile="true"] button:active,
+html[data-clarity-tactile="true"] .mantine-Button-root:active,
+html[data-clarity-tactile="true"] .mantine-ActionIcon-root:active {
+	transform: translateY(1px) scale(0.985);
+	transition: transform 0.05s ease-out;
+}
+
+/* Enhanced Cards and Surfaces */
+body .mantine-Card-root,
+body .mantine-Paper-root {
+	border-radius: var(--clarity-card-radius);
+	border-color: var(--clarity-subtle-border);
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+body .mantine-Button-root {
+	border-radius: var(--clarity-btn-radius);
+	transition:
+		transform 0.1s ease,
+		background-color 0.15s ease;
+}
+
+/* Ambient Status Edge Glow */
+html[data-clarity-glow="true"] [data-server-state="running"],
+html[data-clarity-glow="true"] .clarity-status-glow-running {
+	box-shadow: -3px 0 12px -2px rgba(163, 230, 53, 0.35);
+}
+
+html[data-clarity-glow="true"] [data-server-state="starting"],
+html[data-clarity-glow="true"] .clarity-status-glow-starting {
+	box-shadow: -3px 0 12px -2px rgba(251, 191, 36, 0.35);
+}
+
+html[data-clarity-glow="true"] [data-server-state="offline"],
+html[data-clarity-glow="true"] .clarity-status-glow-offline {
+	box-shadow: -3px 0 12px -2px rgba(244, 63, 94, 0.25);
+}
+
+/* Container Modes */
 body [data-clarity-container="flush"] {
 	width: 100%;
 	max-width: 100%;
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 
 body [data-clarity-container="inset"] {
@@ -67,6 +187,8 @@ body [data-clarity-container="inset"] {
 	max-width: 1440px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 /* Navigation Mode: Collapsed Drawer (Compact Rail) */
@@ -78,7 +200,7 @@ body [data-clarity-container="inset"] {
 
 	body [data-clarity-nav="collapsed-drawer"] #sidebar-desktop:hover {
 		width: 16rem;
-		box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
 		z-index: 45;
 	}
 
@@ -102,28 +224,27 @@ body [data-clarity-container="inset"] {
 
 /* Navigation Mode: Top Bar */
 @media (min-width: 1024px) {
-	body [data-clarity-nav="top-bar"] #sidebar-desktop {
-		width: calc(100% - 1rem);
-		height: 3.75rem;
-		position: sticky;
-		top: 0.5rem;
-		margin-bottom: 0.75rem;
+	body [data-clarity-nav="top-bar"] {
+		display: flex;
+		flex-direction: column;
 	}
 
-	body [data-clarity-nav="top-bar"] #sidebar-desktop #sidebar-content {
+	body [data-clarity-nav="top-bar"] #sidebar-desktop {
+		position: sticky;
+		top: 0;
+		width: 100%;
+		height: 4rem;
 		flex-direction: row;
 		align-items: center;
-		justify-content: space-between;
+		z-index: 40;
+		border-right: none;
+		border-bottom: 1px solid var(--clarity-subtle-border);
+		background-color: var(--surface-card);
+		backdrop-filter: blur(12px);
 	}
+}
 
-	body
-		[data-clarity-nav="top-bar"]
-		#sidebar-desktop
-		#sidebar-content
-		> div:nth-child(2) {
-		flex-direction: row;
-		overflow-x: auto;
-		overflow-y: hidden;
-		gap: 0.35rem;
-	}
+/* Custom Live CSS Container */
+#clarity-custom-css-root {
+	display: none;
 }
